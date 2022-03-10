@@ -16,7 +16,7 @@ jobs:
     - name: Install dependencies
       run: pip install build -e .
     - name: Create packages
-      run: python -m build -n -s -w .
+      run: python -m build -n -w .
         
 #    - name: Build Wheel
     #  run: |
