@@ -13,8 +13,8 @@ jobs:
       run: |
             docker run --rm -v ${{ github.workspace }}:/ws:rw --workdir=/ws \
             quay.io/pypa/manylinux2014_x86_64 \
-            bash -exc '/opt/python/cp38-cp38/bin/python setup.py bdist_wheel && \
-            #yum install -y libcurl-devel && \
+            bash -exc '/opt/python/cp38-cp38/bin/pip install build -e . && \
+            /opt/python/cp38-cp38/bin/python setup.py bdist_wheel && \
             /opt/python/cp38-cp38/bin/pip install ./dist/Eve-*'
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@master
