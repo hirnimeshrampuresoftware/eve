@@ -16,7 +16,7 @@ jobs:
     - name: Install dependencies
       run: pip install build -e .
     - name: Create packages
-      run: python -m build -n -w .
+      run: pip wheel -w DEST_DIR .
         
 #    - name: Build Wheel
     #  run: |
