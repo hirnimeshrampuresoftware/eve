@@ -12,9 +12,13 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8      
-    - name: Build Wheel
-      run: python setup.py bdist_wheel
+        python-version: 3.8
+    - name: Install dependencies
+      run: pip install build -e .
+    - name: Create packages
+      run: python -m build -n -s -w .
+        
+#    - name: Build Wheel
     #  run: |
      #       docker run --rm -v ${{ github.workspace }}:/ws:rw --workdir=/ws \
       #      quay.io/pypa/manylinux2014_x86_64 \
