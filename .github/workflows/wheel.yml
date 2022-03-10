@@ -4,7 +4,6 @@ on: [push, pull_request]
 
 jobs:
   Build-wheel:
-    name: "Build wheel"
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -13,20 +12,11 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
-    - name: Install dependencies
-      run: pip install build -e .
-    - name: Create packages
+    - name: Build Wheel
       run: |
-        pwd
-        ls
-        python --version
-        pip wheel -w DEST_DIR .
-        
-#    - name: Build Wheel
-    #  run: |
-     #       docker run --rm -v ${{ github.workspace }}:/ws:rw --workdir=/ws \
-      #      quay.io/pypa/manylinux2014_x86_64 \
-       #     bash -exc '/opt/python/cp38-cp38/bin/python setup.py bdist_wheel'
+            docker run --rm -v ${{ github.workspace }}:/ws:rw --workdir=/ws \
+            quay.io/pypa/manylinux2014_x86_64 \
+            bash -exc '/opt/python/cp38-cp38/bin/python setup.py bdist_wheel'
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@master
       with:
