@@ -1,4 +1,4 @@
-name: Linux Wheels
+name: PyPI Wheel
 
 on: [push, pull_request]
 
@@ -9,13 +9,16 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8      
     - name: Build Wheel
-      run: |
-            docker run --rm -v ${{ github.workspace }}:/ws:rw --workdir=/ws \
-            quay.io/pypa/manylinux2014_x86_64 \
-            bash -exc '/opt/python/cp38-cp38/bin/pip install build -e . && \
-            /opt/python/cp38-cp38/bin/python setup.py bdist_wheel && \
-            /opt/python/cp38-cp38/bin/pip install ./dist/Eve-*'
+      run: python setup.py bdist_wheel
+    #  run: |
+     #       docker run --rm -v ${{ github.workspace }}:/ws:rw --workdir=/ws \
+      #      quay.io/pypa/manylinux2014_x86_64 \
+       #     bash -exc '/opt/python/cp38-cp38/bin/python setup.py bdist_wheel'
     - name: Publish to PyPI
       uses: pypa/gh-action-pypi-publish@master
       with:
