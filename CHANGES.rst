@@ -6,6 +6,15 @@ Here you can see the full list of changes between each Eve release.
 In Development
 ---------------
 
+- Fix documentation typos (`#1481`_)
+
+.. _`#1481`: https://github.com/pyeve/eve/pull/1481
+
+Version v2.0
+------------
+
+Released on Jun 8, 2022.
+
 Breaking
 ~~~~~~~~
 Starting from this release, Eve supports Python 3.7 and above.
@@ -31,6 +40,8 @@ New
 Fixed
 ~~~~~
 
+- AttributeError: module 'werkzeug.utils' has no attribute 'escape' (`#1474`_)
+- Starting with Werkzeug 2.1, HATEOAS links are relative instead of absolute (`#1475`_)
 - Eve doesn't work with latest PyMongo (v4) (`#1461`_, `#1464`_)
 - Fix 500 error with empty token/bearer (`#1456`_)
 - Do not return related fields if field is a empty list (`#1441`_)
@@ -44,6 +55,8 @@ Fixed
 - Switch to GitHub Actions from Travis CI (`#1439`_, `#1444`_)
 
 .. _`#1469`: https://github.com/pyeve/eve/pull/1469
+.. _`#1475`: https://github.com/pyeve/eve/issues/1475
+.. _`#1474`: https://github.com/pyeve/eve/issues/1474
 .. _`#1451`: https://github.com/pyeve/eve/issues/1451
 .. _`#1464`: https://github.com/pyeve/eve/issues/1464
 .. _`#1461`: https://github.com/pyeve/eve/issues/1461
