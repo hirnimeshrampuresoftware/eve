@@ -27,9 +27,8 @@ jobs:
         #  CIBW_BEFORE_ALL: yum install -y libcurl-devel
         run: |
           python --version
-          pip install numpy
           python -m pip install --upgrade pip setuptools
-          pip install cibuildwheel
+          pip install cython cibuildwheel
           cibuildwheel --output-dir dist
         shell: bash
       - name: Upload wheels
