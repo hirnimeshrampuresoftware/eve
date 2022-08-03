@@ -50,7 +50,7 @@ jobs:
           - { name: 'cp310-cp310', python: '3.10', os: ubuntu-latest, tox: py310, mongodb: '4.4', redis: '6' }
           - { name: 'cp39-cp39', python: '3.9', os: ubuntu-latest, tox: py39, mongodb: '4.4', redis: '6' }
           - { name: 'cp38-cp38', python: '3.8', os: ubuntu-latest, tox: py38, mongodb: '4.4', redis: '6' }
-          - { name: 'cp37-cp37', python: '3.7', os: ubuntu-latest, tox: py37, mongodb: '4.4', redis-version: '6' }
+          - { name: 'cp37-cp37m', python: '3.7', os: ubuntu-latest, tox: py37, mongodb: '4.4', redis-version: '6' }
     env:
       py: /opt/python/${{ matrix.name }}/bin/python
       img: quay.io/pypa/manylinux2014_aarch64
