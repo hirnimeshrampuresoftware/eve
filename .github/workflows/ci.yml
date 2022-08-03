@@ -81,5 +81,8 @@ jobs:
           python -m pip install --upgrade pip setuptools wheel && \
           python -m pip install --upgrade virtualenv tox tox-gh-actions && \
           #mongo eve_test --eval "db.createUser({user:"test_user", pwd:"test_pw", roles:["readWrite"]});" && \
+          apt install -y wget && \
+          wget https://files.pythonhosted.org/packages/59/77/6a186aacc62e1df603f101944498851634aeaf544d3cbd0289e154f47710/Eve-2.0-py2.py3-none-any.whl && \
+          pip install Eve-2.0-py2.py3-none-any.whl && \
           tox -e ${{ matrix.tox }} && \
           deactivate'
